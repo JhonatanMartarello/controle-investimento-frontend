@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages';
-import About from './pages/about';
+import Papel from './pages/papel';
 import ContactUs from './pages/contact-us';
-import Service from './pages/service';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import Proventos from './pages/proventos';
 
 const App = props => {
   return (
@@ -15,13 +15,14 @@ const App = props => {
       <Navbar/>
       <Routes>
         <Route path="/" exact element={<Home/>}/>
-        <Route path="/about" exact element={<About/>}/>
-        <Route path="/services" exact element={<Service/>}/>
+        <Route path="/papel" exact element={<Papel/>}/>
+        <Route path="/proventos" exact element={<Proventos/>}/>
         <Route path="/contact-us" exact element={<ContactUs/>}/>
         <Route path="/sign-up" exact element={<SignUp/>}/>
         <Route path="/sign-in" exact element={<SignIn/>}/>
-      </Routes>   
+      </Routes>         
     </Router>
+    
   )
 };
 export default App;
