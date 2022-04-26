@@ -5,6 +5,23 @@
 }
 
 .submit-form {
-    max-width: 150px;
+    max-width: 200px;
     margin: auto;
-  }
+    
+}
+
+.form-group {
+    padding: 5px 0px;
+}
+
+.form-button {
+    justify-content: center;
+    padding-top: 29px;
+}
+
+.adicionar-papel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh
+}

@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import PapelService from '../../services/papel.service';
 import Table from 'react-bootstrap/Table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const PapelLista = () => {
-    const [papelLista, setPapelLista] = useState([]);
-  
-    useEffect(() => {
-      retrievePapel();
-    }, []);
-  
-    const retrievePapel = () => {
-      PapelService.getAll()
-        .then(response => {
-          setPapelLista(response.data);
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
-  
+const PapelLista = (props) => {
+    const papelLista = props.papelLista;
   
     return (
       <Table striped bordered hover>
@@ -31,6 +13,8 @@ const PapelLista = () => {
             <th>Nome</th>
             <th>CNPJ</th>
             <th>Tipo Ativo</th>
+            <th>Alterar</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +25,8 @@ const PapelLista = () => {
               <td>{papel.nome}</td>
               <td>{papel.cnpj}</td>
               <td>{papel.tipoAtivo}</td>
+              <td><button className="btn btn-primary"/></td>
+              <td><button className="btn btn-danger"/></td>
             </tr>
           ))}
         </tbody>

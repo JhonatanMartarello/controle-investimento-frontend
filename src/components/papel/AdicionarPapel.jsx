@@ -4,21 +4,30 @@ import PapelLista from "./ListaPapel";
 
 const AddPapel = () => {
     const initialPapelState = {
-        codAtivo: null,
+        codAtivo: "",
         codigoNegociacao: "",
         nome: "",
-        cnpj: null,
-        tipoAtivo: "",
-        published: false
+        cnpj: "",
+        tipoAtivo: ""
     };
 
     const [papel, setPapel] = useState(initialPapelState);
-    const [submitted, setSubmitted] = useState(false);
+    const [papelLista, setPapelLista] = useState([]);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
         setPapel({ ...papel, [name]: value });
     };
+
+
+    PapelDataService.getAll()
+        .then(response => {
+            setPapelLista(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+
 
     const savePapel = () => {
         var data = {
@@ -30,16 +39,7 @@ const AddPapel = () => {
 
         PapelDataService.create(data)
             .then(response => {
-                setPapel({
-                    codAtivo: response.data.codAtivo,
-                    codigoNegociacao: response.data.codigoNegociacao,
-                    nome: response.data.nome,
-                    cnpj: response.data.cnpj,
-                    tipoAtivo: response.data.tipoAtivo,
-                    published: response.data.published
-                });
-                setSubmitted(true);
-                console.log(response.data);
+                newPapel(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -47,24 +47,17 @@ const AddPapel = () => {
 
     }
 
-    const newPapel = () => {
+    const newPapel = papel => {
+        setPapelLista([...papelLista, papel])
         setPapel(initialPapelState);
-        setSubmitted(false);
     }
 
 
     return (
         <div>
-            <div className="submit-form">
-                {submitted ? (
-                    <div>
-                        <h4>You submitted successfully!</h4>
-                        <button className="btn btn-success" onClick={newPapel}>
-                            Add
-                        </button>
-                    </div>
-                ) : (
-                    <div>
+            <form>
+                <div class="row">
+                    <div class="col-auto">
                         <div className="form-group">
                             <label htmlFor="codigoNegociacao">Cód. Negociação:</label>
                             <input
@@ -77,6 +70,9 @@ const AddPapel = () => {
                                 name="codigoNegociacao"
                             />
                         </div>
+                    </div>
+
+                    <div class="col-auto">
                         <div className="form-group">
                             <label htmlFor="nome">Nome:</label>
                             <input
@@ -89,6 +85,9 @@ const AddPapel = () => {
                                 name="nome"
                             />
                         </div>
+                    </div>
+
+                    <div class="col-auto">
                         <div className="form-group">
                             <label htmlFor="cnpj">CNPJ:</label>
                             <input
@@ -101,6 +100,9 @@ const AddPapel = () => {
                                 name="cnpj"
                             />
                         </div>
+                    </div>
+
+                    <div class="col-auto">
                         <div className="form-group">
                             <label htmlFor="tipoAtivo">Tipo Ativo:</label>
                             <input
@@ -113,15 +115,17 @@ const AddPapel = () => {
                                 name="tipoAtivo"
                             />
                         </div>
-
-                        <button onClick={savePapel} className="btn btn-success">
-                            Adicionar
-                        </button>
                     </div>
-                )}
-
-            </div>
-            <div><PapelLista/></div>
+                    <div class="col">
+                        <div className="form-button">
+                            <button onClick={savePapel} className="btn btn-success">
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div><PapelLista papelLista={papelLista} /></div>
         </div>
 
     );
