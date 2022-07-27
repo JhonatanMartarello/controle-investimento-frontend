@@ -17,8 +17,8 @@ const Navbar = () => {
                     <NavLink to='/proventos'>
                         Proventos
                     </NavLink>
-                    <NavLink to='/contact-us'>
-                        Contact Us
+                    <NavLink to='/posicao'>
+                        Posição
                     </NavLink>
                     <NavLink to='/sign-up'>
                         Sign Up

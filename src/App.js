@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages';
 import Papel from './pages/papel';
-import ContactUs from './pages/contact-us';
+import Posicao from './pages/posicao';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 import Proventos from './pages/proventos';
@@ -17,7 +17,7 @@ const App = props => {
         <Route path="/" exact element={<Home/>}/>
         <Route path="/papel" exact element={<Papel/>}/>
         <Route path="/proventos" exact element={<Proventos/>}/>
-        <Route path="/contact-us" exact element={<ContactUs/>}/>
+        <Route path="/posicao" exact element={<Posicao/>}/>
         <Route path="/sign-up" exact element={<SignUp/>}/>
         <Route path="/sign-in" exact element={<SignIn/>}/>
       </Routes>         

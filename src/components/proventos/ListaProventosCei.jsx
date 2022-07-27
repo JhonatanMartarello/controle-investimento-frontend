@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ProventosService from '../../services/proventos.service';
 import Table from 'react-bootstrap/Table'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UIMoeda from '../utils/UIMoeda';
 
 const ListaProventosCei = () => {
     const [proventosLista, setProventosLista] = useState([]);
@@ -41,9 +42,9 @@ const ListaProventosCei = () => {
             <td>{proventos.papel}</td>
             <td>{proventos.data}</td>
             <td>{proventos.tipoMovimentacao}</td>
-            <td>{proventos.precoUnitario}</td>
+            <td><UIMoeda>{proventos.precoUnitario}</UIMoeda></td>
             <td>{proventos.quantidade}</td>
-            <td>{proventos.valorOperacao}</td>
+            <td><UIMoeda>{proventos.valorOperacao}</UIMoeda></td>
             
           </tr>
         ))}

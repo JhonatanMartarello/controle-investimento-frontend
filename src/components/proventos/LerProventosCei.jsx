@@ -13,7 +13,8 @@ const LerProventosCei = () => {
   }
 
   const lerArquivo = () => {
-    ProventosDataService.post(arquivo)
+    var caminhoArquivo = arquivo.replace("C:\\fakepath\\", '');
+    ProventosDataService.post(caminhoArquivo)
       .then(response => {
         console.log(response.data)
       })
@@ -33,7 +34,7 @@ const LerProventosCei = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicNomeArquivo">
               <Form.Label>Nome Arquivo:</Form.Label>
-              <Form.Control type='text' placeholder='Informe o nome do arquivo' value={arquivo} onChange={handleInputChange}></Form.Control>
+              <Form.Control type='file' placeholder='Informe o nome do arquivo' value={arquivo} onChange={handleInputChange}></Form.Control>
             </Form.Group>
           </Form>
         </td>

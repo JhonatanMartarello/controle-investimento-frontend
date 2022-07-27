@@ -2,10 +2,7 @@ import AdicionarPapel from "../components/papel/AdicionarPapel";
 
 const Papel = () => {
   return (
-    <div className="adicionar-papel">
-      <AdicionarPapel></AdicionarPapel>
-    </div>
-
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><AdicionarPapel/></div>
   )
 }
 

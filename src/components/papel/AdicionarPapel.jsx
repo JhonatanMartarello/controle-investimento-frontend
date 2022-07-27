@@ -16,7 +16,7 @@ const AddPapel = () => {
 
     const handleInputChange = event => {
         const { name, value } = event.target;
-        setPapel({ ...papel, [name]: value });
+        setPapel({ ...papel, [name]: value.toUpperCase() });
     };
 
 
@@ -94,7 +94,6 @@ const AddPapel = () => {
                                 type="text"
                                 className="form-control"
                                 id="cnpj"
-                                required
                                 value={papel.cnpj}
                                 onChange={handleInputChange}
                                 name="cnpj"
@@ -109,7 +108,6 @@ const AddPapel = () => {
                                 type="text"
                                 className="form-control"
                                 id="tipoAtivo"
-                                required
                                 value={papel.tipoAtivo}
                                 onChange={handleInputChange}
                                 name="tipoAtivo"
